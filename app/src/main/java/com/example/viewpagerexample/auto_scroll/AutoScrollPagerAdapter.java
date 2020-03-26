@@ -17,14 +17,23 @@ public class AutoScrollPagerAdapter extends PagerAdapter {
 
     private ArrayList<String> colorList;
     public int LOOPS_COUNT = 100;
-    public int PAGE_COUNT = 10;
 
     public AutoScrollPagerAdapter(ArrayList<String> colorList) {
         this.colorList = colorList;
     }
 
     @Override
-    public int getCount() { return LOOPS_COUNT * PAGE_COUNT; }
+    public int getCount() {
+        if (colorList == null) {
+            return 0;
+        } else {
+            if (colorList.size() > 1) {
+                return LOOPS_COUNT * colorList.size();
+            } else {
+                return colorList.size();
+            }
+        }
+    }
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) { return view == object; }
     @Override
@@ -36,11 +45,16 @@ public class AutoScrollPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.view_image, container, false);
 
-        int index = position % PAGE_COUNT;
+        int index = position % colorList.size();
         TextView tv_realCount = (TextView)view.findViewById(R.id.tv_real_count);
         TextView tv_innerCount = (TextView)view.findViewById(R.id.tv_inner_count);
-        tv_realCount.setText(String.valueOf(position));
-        tv_innerCount.setText(String.valueOf(index));
+        if (colorList.size() > 1) {
+            tv_realCount.setText(String.valueOf(position));
+            tv_innerCount.setText(String.valueOf(index));
+        } else {
+            tv_realCount.setText("딸랑 하나 ? ");
+            tv_innerCount.setText("딸랑 하나 ? ");
+        }
 
         view.setBackgroundColor(Color.parseColor(colorList.get(index)));
 

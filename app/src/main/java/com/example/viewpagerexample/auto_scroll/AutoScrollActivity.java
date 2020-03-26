@@ -1,6 +1,7 @@
 package com.example.viewpagerexample.auto_scroll;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +39,15 @@ public class AutoScrollActivity extends AppCompatActivity {
         Switch sw_slow_rxjava = findViewById(R.id.sw_slow_rxjava);
         rxjava_viewpager.setAdapter(new AutoScrollPagerAdapter(colorList));
         rxjava_viewpager.setPageMargin(20);
-        rxjava_viewpager.setCurrentItem(100 * 10 / 2);  // 전역변수로 설정 하여 계산해 줘야 하지만.. 귀찮아서 걍 하드코딩..
+        rxjava_viewpager.setCurrentItem(100 * colorList.size() / 2);  // 전역변수로 설정 하여 계산해 줘야 하지만.. 귀찮아서 걍 하드코딩..
+
+        if (colorList.size() > 1) {
+            sw_rxjava.setVisibility(View.VISIBLE);
+            sw_slow_rxjava.setVisibility(View.VISIBLE);
+        } else {
+            sw_rxjava.setVisibility(View.GONE);
+            sw_slow_rxjava.setVisibility(View.GONE);
+        }
 
         // 오토 스크롤 스위치
         sw_rxjava.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
