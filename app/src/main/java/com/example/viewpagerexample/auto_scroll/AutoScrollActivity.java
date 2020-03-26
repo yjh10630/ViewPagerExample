@@ -16,7 +16,7 @@ import rx.functions.Action1;
 
 public class AutoScrollActivity extends AppCompatActivity {
 
-    private WrapViewPager rxjava_viewpager;
+    private CustomScrollWrapViewPager rxjava_viewpager;
 
     private Subscription mSubscription;
     private boolean isAutoScroll;

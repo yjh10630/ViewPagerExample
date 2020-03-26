@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_titld"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fragment LifeCycle Test \n in PagerAdapter"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/vp_test1"/>
-
     <Button
         android:id="@+id/vp_test1"
         android:layout_width="wrap_content"
@@ -46,6 +33,16 @@
         android:layout_height="wrap_content"
         android:text="Auto-Page Scrolling"
         app:layout_constraintTop_toBottomOf="@id/vp_test2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/vp_carouseleffect"/>
+
+    <Button
+        android:id="@+id/vp_carouseleffect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carousel_Effect_Animation"
+        app:layout_constraintTop_toBottomOf="@id/vp_auto_paging"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

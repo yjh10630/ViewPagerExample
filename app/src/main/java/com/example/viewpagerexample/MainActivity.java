@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.viewpagerexample.auto_scroll.AutoScrollActivity;
+import com.example.viewpagerexample.carouseleffect.CarouselEffectActivity;
 import com.example.viewpagerexample.pageradapter.PagerAdapterActivity;
 import com.example.viewpagerexample.stateadapter.StatePagerAdapterActivity;
 
@@ -35,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, AutoScrollActivity.class));
+            }
+        });
+
+        findViewById(R.id.vp_carouseleffect).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CarouselEffectActivity.class));
             }
         });
 

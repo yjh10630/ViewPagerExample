@@ -20,6 +20,7 @@
         <activity android:name=".pageradapter.PagerAdapterActivity"/>
         <activity android:name=".stateadapter.StatePagerAdapterActivity"/>
         <activity android:name=".auto_scroll.AutoScrollActivity"/>
+        <activity android:name=".carouseleffect.CarouselEffectActivity"/>
     </application>
 
 </manifest>

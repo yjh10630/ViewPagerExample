@@ -1,4 +1,4 @@
-package com.example.viewpagerexample.auto_scroll;
+package com.example.viewpagerexample.carouseleffect;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,18 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.viewpagerexample.auto_scroll.ScrollerCustomDuration;
+
 import java.lang.reflect.Field;
 
 public class WrapViewPager extends ViewPager {
 
     public WrapViewPager(@NonNull Context context) {
         super(context);
-        postInitViewPager();
     }
 
     public WrapViewPager(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        postInitViewPager();
     }
 
     @Override
@@ -37,30 +37,4 @@ public class WrapViewPager extends ViewPager {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
-
-    private ScrollerCustomDuration mScroller = null;
-
-    /**
-     * Override the Scroller instance with our own class so we can change the
-     * duration
-     */
-    private void postInitViewPager() {
-        try {
-            Field scroller = ViewPager.class.getDeclaredField("mScroller");
-            scroller.setAccessible(true);
-            Field interpolator = ViewPager.class.getDeclaredField("sInterpolator");
-            interpolator.setAccessible(true);
-
-            mScroller = new ScrollerCustomDuration(getContext(),
-                    (Interpolator) interpolator.get(null));
-            scroller.set(this, mScroller);
-        } catch (Exception e) {
-        }
-    }
-
-    public void setScrollDurationFactor(int scrollFactor) {
-        mScroller.setScrollDurationFactor(scrollFactor);
-    }
-
-
 }
